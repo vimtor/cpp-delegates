@@ -23,7 +23,7 @@ All of the three classes support function removal by using '-='
 action -= foo;
 action.Invoke();
 
-Prints: Nothing.
+// Prints: Nothing.
 ```
 
 ### Func
@@ -40,7 +40,7 @@ func.Invoke(5, 'A');
 ```
 
 ### Delegate
-His purpose is to store functions whose return type is not void with 0 or more parameters.
+His purpose is to store functions whose return type could be whatever, with 0 or more parameters.
 
 ``` C++
 Delegate<int()> delegate;
@@ -54,6 +54,17 @@ A nice feature of the _Delegate_ is that the Invoke method returns a std::vector
 ``` C++
 for (const auto &item : delegate.Invoke()) std::cout << item;
 // Prints: 123
+```
+
+As with _Funcs_, you can also pass parameters to the Invoke method.
+``` C++
+int square(int x) { return x * x; }
+
+Delegate<int(int)> delegate;
+delegate += square;
+
+std::cout << delegate.Invoke(2)[0];
+// Prints: 4
 ```
 
 ## Frequent questions
@@ -73,4 +84,11 @@ action += []() { print(6, 'B'); };
 action.Invoke();
 // Prints: 5A6B
 ```
+
+### Something else you didn't mention?
+Thanks for asking. The operator `+=` is overloaded to accept a vector.
+``` C++
+delegate += { foo, bar };
+```
+You can also reset or clear the delegate with `delegate.Clear()`
 
