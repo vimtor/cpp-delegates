@@ -2,7 +2,7 @@
 Approximation of [C# Delegates](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/), Funcs and Actions on C++
 
 ## How to use it
-Even thought the three different classes (Delegate, Func and Action) store functions to use them in the future, they serve different purposes. Let's explain them one by one.
+Even though the three different classes (Delegate, Func and Action) store functions to use them in the future, they serve different purposes. Let's explain them one by one.
 
 ### Action
 His purpose is to store functions whose return type is always void with 0 parameters.
