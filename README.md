@@ -90,5 +90,8 @@ Thanks for asking. The operator `+=` is overloaded to accept a vector.
 ``` C++
 delegate += { foo, bar };
 ```
+At difference of C#, delegates can be **copied by value**.
+``` C++
+Delegate<int> delegate(copyMePls); // This is possible.
+```
 You can also reset or clear the delegate with `delegate.Clear()`
-
