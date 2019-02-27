@@ -17,7 +17,7 @@ private:
 	using Function = std::function<T>;
 	std::vector<Function> functions;
 
-	using ResultType = typename std::function<T>::result_type;
+	using ResultType = typename Function::result_type;
 	std::vector<ResultType> results;
 
 	// Helper to get the address of a std::function.
@@ -41,6 +41,19 @@ public:
 		for (const auto &function : functions)
 		{
 			results.push_back(function());
+		}
+
+		return results;
+	}
+
+	template<class ... Args>
+	auto Invoke(Args ... args)
+	{
+		results.clear();
+
+		for (const auto &function : functions)
+		{
+			results.push_back(function(args...));
 		}
 
 		return results;
