@@ -51,6 +51,11 @@ public:
 
 	~Delegate() = default;
 
+	Delegate(const Delegate &delegate)
+	{
+		functions = delegate.functions;
+	}
+
 	template<typename ... Params>
 	auto Invoke(Params ... params)
 	{
